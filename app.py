@@ -84,7 +84,7 @@ if st.button("Eintragen"):
         "Jahr": selected_date.year,
         "Kalenderwoche": selected_date.isocalendar().week,
     }
-    df = df.append(new_entry, ignore_index=True)
+    df = pd.concat([df, pd.DataFrame([new_entry])], ignore_index=True)
     df.to_csv(log_file, index=False)
     st.success("Eintrag erfolgreich gespeichert!")
 
@@ -123,8 +123,11 @@ if st.button("Änderungen speichern"):
 
 
 week_time = df[
-    df["Datum"].between(selected_date - pd.Timedelta(days=6), selected_date)
+    df["Datum"].between(
+        (selected_date - pd.Timedelta(days=6)).date(), selected_date.date()
+    )
 ]["Arbeitszeit"].sum()
+
 car_rides = df[df["Auto"] == True].shape[0]
 
 st.subheader("Zusammenfassung pro Kalenderwoche:")
