@@ -52,7 +52,7 @@ set_page_config()
 # Titel
 st.title("Arbeitszeit")
 pwd = st.sidebar.text_input("Password:", value="", type="password")
-if pwd == sf:
+if pwd == "sf":
     # Inputs
     input_time = st.time_input("Arbeitszeit", datetime.time(8))
     work_time = (
