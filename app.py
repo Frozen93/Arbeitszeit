@@ -8,7 +8,7 @@ def set_page_config() -> None:
     """
     Set the configuration for the Streamlit page.
     """
-    st.set_page_config(page_title="Lineare Regression", layout="wide")
+    st.set_page_config(page_title="Arbeitszeit", layout="wide")
     st.markdown(
         """ <style>
     footer {visibility: hidden;}
